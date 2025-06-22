@@ -29,3 +29,5 @@ export default {
         sslValidationApi: process.env.SSL_VALIDATIOIN_API
     }
 }
+
+ 
