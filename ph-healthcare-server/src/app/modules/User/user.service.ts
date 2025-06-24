@@ -7,14 +7,13 @@ import {
   UserRole,
   UserStatus,
 } from "@prisma/client";
-import * as bcrypt from 'bcrypt'
+import * as bcrypt from "bcrypt";
 
 import { Request } from "express";
 import prisma from "../../../shared/prisma";
 
 const createAdmin = async (req: Request) => {
-
-    const hashedPassword: string = await bcrypt.hash(req.body.password, 12)
+  const hashedPassword: string = await bcrypt.hash(req.body.password, 12);
 
   const userData = {
     email: req.body.admin.email,
@@ -33,9 +32,10 @@ const createAdmin = async (req: Request) => {
 
     return createdAdminData;
   });
- 
+
   return result;
 };
+
 
 export const userService = {
   createAdmin,
