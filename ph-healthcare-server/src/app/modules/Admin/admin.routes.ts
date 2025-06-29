@@ -4,12 +4,13 @@ import validateRequest from '../../middlewares/validateRequest';
 import { adminValidationSchemas } from './admin.validations';
 
 import { UserRole } from '@prisma/client';
+import auth from '../../middlewares/auth';
 
 const router = express.Router();
 
 router.get(
     '/',
-    // auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
+    auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
     AdminController.getAllFromDB
 );
 
@@ -22,7 +23,7 @@ router.get(
 router.patch(
     '/:id',
     // auth(UserRole.SUPER_ADMIN, UserRole.ADMIN),
-    // validateRequest(adminValidationSchemas.update),
+    validateRequest(adminValidationSchemas.update),
     AdminController.updateIntoDB
 );
 
