@@ -9,6 +9,7 @@ import { paginationHelper } from "../../../helpars/paginationHelper";
 
 const getAllFromDB = async (params: IAdminFilterRequest, options: IPaginationOptions) => {
     const { page, limit, skip } = paginationHelper.calculatePagination(options);
+    
     const { searchTerm, ...filterData } = params;
 
     const andConditions: Prisma.AdminWhereInput[] = [];
